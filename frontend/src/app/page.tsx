@@ -12,6 +12,7 @@ import {
 } from "react";
 import Link from "next/link";
 import AnalysisInsights from "@/components/AnalysisInsights";
+import ResearchIdentity from "@/components/ResearchIdentity";
 import Icon from "@/components/Icon";
 import BriefPanel from "@/components/BriefPanel";
 import DamageCanvas from "@/components/DamageCanvas";
@@ -774,14 +775,7 @@ export default function HomePage() {
   return (
     <div className="app-shell">
       <aside className="sidebar">
-        <Link className="brand" href="/" aria-label="DisasterIQ home">
-          <span className="brand-mark">
-            <Icon name="layers" size={23} />
-          </span>
-          <span>
-            Disaster<span className="brand-suffix">IQ</span>
-          </span>
-        </Link>
+        <ResearchIdentity sidebar />
         <div className="workspace-label">RESPONSE WORKSPACE</div>
         <nav className="side-nav" aria-label="Workspace">
           <button

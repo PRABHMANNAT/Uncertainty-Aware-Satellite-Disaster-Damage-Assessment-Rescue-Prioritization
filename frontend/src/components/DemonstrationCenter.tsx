@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import Icon from "./Icon";
+import ResearchIdentity from "./ResearchIdentity";
 import { API_BASE } from "@/lib/api";
 import { DEMONSTRATIONS, type MapView } from "@/lib/demonstrations";
 
@@ -130,17 +131,11 @@ export default function DemonstrationCenter() {
   return (
     <div className="demo-page">
       <header className="demo-header">
-        <Link href="/" className="demo-brand">
-          <span className="brand-mark">
-            <Icon name="layers" size={22} />
-          </span>
-          DisasterIQ
-        </Link>
+        <ResearchIdentity />
         <nav>
           <Link href="/">Assessment workspace</Link>
           <span>Demonstrations</span>
         </nav>
-        <span className="neutral-badge">SOURCE-LED EXPLORATION</span>
       </header>
       <main className="demo-main">
         <div className="page-heading">

@@ -56,3 +56,15 @@ in frontend/public/historical/provenance.json. Processing: RGB crop and bilinear
 resampling, without synthetic alterations. Regional comparison only; not a
 building-level damage assessment or evidence of cause or responsibility.
 Terms: https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice
+
+
+Chandigarh University identity
+------------------------------
+The Chandigarh University wordmarks are sourced from its official identity page:
+https://www.cuchd.in/about/our-identity.php
+Original assets:
+https://www.cuchd.in/includes/assets/images/header-footer/cu-logo-dark.webp
+https://www.cuchd.in/includes/assets/images/header-footer/cu-logo-white.webp
+The assets are reproduced without alteration. University identity and trademarks
+remain the property of Chandigarh University; they are not covered by this
+repository's source-code license.

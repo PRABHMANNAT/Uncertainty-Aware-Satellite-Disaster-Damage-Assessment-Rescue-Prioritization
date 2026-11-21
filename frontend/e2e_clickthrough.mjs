@@ -56,8 +56,8 @@ try {
   );
   await page.waitForFunction(
     () =>
-      [...document.querySelectorAll("img")].length === 2 &&
-      [...document.querySelectorAll("img")].every(
+      [...document.querySelectorAll(".image-comparison img")].length === 2 &&
+      [...document.querySelectorAll(".image-comparison img")].every(
         (image) => image.complete && image.naturalWidth > 0,
       ),
   );
@@ -262,13 +262,13 @@ try {
     (await page.locator(".total-metric strong").innerText()) === "—",
   );
   await page.waitForFunction(() =>
-    [...document.querySelectorAll("img")].every(
+    [...document.querySelectorAll(".image-comparison img")].every(
       (image) => image.complete && image.naturalWidth > 0,
     ),
   );
   check(
     "Switching scene updates paired satellite images",
-    (await page.locator("img").first().getAttribute("src")).includes(
+    (await page.locator(".image-comparison img").first().getAttribute("src")).includes(
       "midwest-flooding",
     ),
   );

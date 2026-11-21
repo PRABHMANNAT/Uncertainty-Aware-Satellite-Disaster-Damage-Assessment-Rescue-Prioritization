@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { RESEARCH_TITLE, RESEARCH_INSTITUTION } from "@/lib/research";
 
 export const metadata: Metadata = {
-  title: "DisasterIQ — Satellite Disaster-Damage Triage",
-  description:
-    "Satellite damage assessment for disaster response. Compare imagery, prioritize response zones, and export field reports.",
+  title: RESEARCH_TITLE,
+  applicationName: RESEARCH_TITLE,
+  description: `${RESEARCH_TITLE}. ${RESEARCH_INSTITUTION} research demonstration: compare satellite imagery, inspect uncertainty, prioritize response zones, and export field reports.`,
 };
 
 export default function RootLayout({

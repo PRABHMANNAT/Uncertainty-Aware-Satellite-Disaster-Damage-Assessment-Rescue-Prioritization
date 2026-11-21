@@ -1,16 +1,25 @@
 <p align="center">
-  <img src="./Assets/DisasterIQ-logo.png" alt="DisasterIQ-logo.png" width="350">
+  <img src="./frontend/public/branding/chandigarh-university-dark.webp" alt="Chandigarh University" width="240">
 </p>
 
-<h1 align="center"> DisasterIQ</h1>
+<h1 align="center">Uncertainty-Aware Satellite Disaster Damage Assessment &amp; Rescue Prioritization</h1>
 
-<p align="center">
-  <strong>SEE DAMAGE. PRIORITIZE RELIEF. SAVE LIVES.</strong>
-</p>
+<p align="center"><strong>Chandigarh University</strong></p>
+<p align="center">Research demonstration platform · DisasterIQ</p>
 
-<p align="center">
-  <a href="https://disasteriq.vercel.app/"><strong>🔗 Try the live app → disasteriq.vercel.app</strong></a>
-</p>
+This repository contains the research demonstration application for
+**Uncertainty-Aware Satellite Disaster Damage Assessment & Rescue Prioritization**.
+It brings together paired satellite imagery, damage estimates, explicit uncertainty,
+response-zone prioritization, guided case studies, and field-report exports.
+
+The application includes four natural-disaster demonstrations, a dated Israel/Gaza
+regional comparison, Microsoft Visualizer comparison controls, and CSV/GeoJSON
+exports.
+
+The university logo is sourced unchanged from the
+[official Chandigarh University identity page](https://www.cuchd.in/about/our-identity.php).
+
+---
 
 # 🌍 DisasterIQ
 
