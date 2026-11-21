@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test:e2e": "node e2e_clickthrough.mjs",
-    "test:demos": "node e2e_demonstrations.mjs"
+    "test:demos": "node e2e_demonstrations.mjs",
+    "test:research": "node --test tests/research.test.mjs",
+    "test:paper": "node e2e_research.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

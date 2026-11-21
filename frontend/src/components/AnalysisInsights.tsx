@@ -1,6 +1,8 @@
 "use client";
 import type { AnalysisResult } from "@/lib/api";
 import Icon from "./Icon";
+import Link from "next/link";
+import { EXPLAINER_STORAGE_KEY } from "@/lib/researchMath";
 
 function saveData(filename: string, contents: string, mime: string) {
   const url = URL.createObjectURL(new Blob([contents], { type: mime }));
@@ -90,6 +92,45 @@ export default function AnalysisInsights({
           <h2>Analysis & handoff</h2>
         </div>
         <div className="insight-export-actions">
+          <Link
+            className="button explain-assessment-link"
+            href="/research?section=assessment"
+            onClick={(event) => {
+              try {
+                sessionStorage.setItem(
+                  EXPLAINER_STORAGE_KEY,
+                  JSON.stringify({
+                    pair_id: analysis.pair_id,
+                    inference_mode: analysis.inference_mode,
+                    geo_available: analysis.geo_available,
+                    geo_mode: analysis.geo_mode,
+                    summary: analysis.summary,
+                    zones: analysis.zones.map(
+                      ({
+                        rank,
+                        priority_score,
+                        building_counts,
+                        confidence,
+                      }) => ({
+                        rank,
+                        priority_score,
+                        building_counts,
+                        confidence,
+                      }),
+                    ),
+                  }),
+                );
+              } catch {
+                event.preventDefault();
+                window.location.assign(
+                  "/research?section=assessment&snapshot=unavailable",
+                );
+              }
+            }}
+          >
+            <Icon name="info" size={14} />
+            Explain this assessment
+          </Link>
           <button className="button" onClick={exportCsv}>
             <Icon name="download" size={14} />
             Zones CSV

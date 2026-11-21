@@ -135,6 +135,7 @@ export default function DemonstrationCenter() {
         <nav>
           <Link href="/">Assessment workspace</Link>
           <span>Demonstrations</span>
+          <Link href="/research">Paper Explorer</Link>
         </nav>
       </header>
       <main className="demo-main">

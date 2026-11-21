@@ -812,6 +812,10 @@ export default function HomePage() {
           <Icon name="play" />
           Demonstrations
         </Link>
+        <Link className="nav-item demo-nav-link" href="/research">
+          <Icon name="layers" />
+          Paper Explorer
+        </Link>
         <div className="source-section">
           <div className="sidebar-section-title">
             Imagery source

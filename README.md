@@ -478,3 +478,35 @@ npm run test:demos
 
 Browser checks use `CHROME_BIN` to select Chromium when the default Windows Chrome
 path is not present. `APP_URL` overrides the assessment smoke test's local URL.
+
+
+## Paper Explorer
+
+Open `/research` from the assessment sidebar or the demonstrations header.
+The explorer explains the repository's implemented methods; no manuscript or
+validated experimental results are bundled. All editable probability and
+validation examples are explicitly marked as educational simulations.
+
+- **Method walkthrough:** inspect the input, output, and limits of comparison,
+  change detection, component counting, confidence availability, prioritization,
+  and report handoff, with links to the implementation.
+- **Priority-score lab:** edit counts and what-if severity weights, inspect each
+  class's contribution, and compare two zones. Default scoring and two-decimal
+  rounding match `backend/app/services/scoring.py`. Changes do not affect the
+  backend's operational rankings.
+- **Uncertainty lab:** explore normalized entropy, top-class probability, class
+  margin, and an illustrative review-threshold/coverage tradeoff. These values
+  are computed for synthetic distributions, not inferred for heuristic outputs.
+- **Validation lab:** edit a four-class confusion matrix and compute accuracy,
+  precision, recall, F1, and IoU. Rows are reference labels; columns are predictions.
+  Undefined metrics show a dash and are excluded from macro averages.
+- **Explain an assessment:** use the button in Analysis & handoff after a real
+  analysis to inspect that zone's numerical score and confidence availability.
+  Only a compact numerical snapshot is passed through browser session storage;
+  images and masks are not included. Invalid or unavailable storage is handled.
+- **Export explanation:** download a JSON record separating synthetic/user-entered
+  examples from any saved workspace snapshot, with formulas and source references.
+
+Checks: `npm run test:research` runs the pure calculator tests; `npm run test:paper`
+verifies the browser interactions while both application servers are running.
+The research calculator tests also run in GitHub Actions.
