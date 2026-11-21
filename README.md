@@ -32,10 +32,37 @@ The university logo is sourced unchanged from the
 ## 🖥️ Dashboard
 
 <p align="center">
-  <img src="./Assets/dashboard.png" alt="DisasterIQ dashboard — damage overlay, priority zones, and AI situation brief" width="900">
+  <img src="./Assets/dashboard.png" alt="Current Chandigarh University assessment workspace with paired satellite imagery, estimated damage overlay, and ranked response zones" width="1100">
 </p>
 
-<p align="center"><em>Before/after imagery with an AI damage overlay, ranked priority zones, a damage summary, and an AI-generated situation brief — all in one triage view.</em></p>
+<p align="center"><em>The current assessment workspace: Chandigarh University branding, before/after imagery, estimated damage components, ranked zones, and report/data exports. This screenshot uses the local image-change heuristic; counts are estimates, not verified buildings.</em></p>
+
+<details>
+<summary><strong>Preview the demonstrations and Paper Explorer</strong></summary>
+
+### Guided disaster demonstrations
+
+<p align="center">
+  <img src="./Assets/demonstrations.png" alt="Five-case demonstration gallery and a dated Gaza City satellite comparison" width="1100">
+</p>
+
+Four natural-disaster cases and a separate Israel/Gaza historical comparison
+provide guided map views, source information, bookmarks, and case-study reports.
+The Gaza City view shown compares 27 September with 1 November 2023 Sentinel-2
+imagery at 10 m resolution; it supplies regional context rather than building-level
+damage inference.
+
+### Interactive Paper Explorer
+
+<p align="center">
+  <img src="./Assets/paper-explorer.png" alt="Paper Explorer priority-score lab showing severity counts, weights, and an explained calculation" width="1100">
+</p>
+
+Explore the implemented method, edit severity-weighted priority calculations,
+investigate uncertainty and validation metrics, or explain a real assessment.
+The lab examples are educational and are not measured model-performance results.
+
+</details>
 
 ---
 
