@@ -39,6 +39,7 @@ class AnalysisSummary(BaseModel):
     destroyed_pct: float
     major_pct: float
     minor_pct: float
+    building_counts: BuildingCounts | None = None
 
 
 class AnalysisResult(BaseModel):
@@ -84,3 +85,4 @@ class DemoPair(BaseModel):
 class ReportRequest(BaseModel):
     analysis: AnalysisResult
     brief: str
+    analyst_notes: str = Field(default="", max_length=3000)

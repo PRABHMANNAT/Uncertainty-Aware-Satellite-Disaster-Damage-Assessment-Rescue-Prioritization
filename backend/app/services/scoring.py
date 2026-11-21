@@ -181,6 +181,7 @@ def score_mask(
     )
 
     summary = AnalysisSummary(
+        building_counts=all_building_counts,
         total_building_pixels=total_building_px,
         total_buildings=total_buildings,
         destroyed_pct=round(all_building_counts.destroyed / total_buildings * 100, 2) if total_buildings else 0.0,

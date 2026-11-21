@@ -33,3 +33,26 @@ not to DisasterIQ's own source code.
 Open-source libraries used by the frontend (Next.js, React, Tailwind CSS,
 Leaflet) and backend (FastAPI, NumPy, SciPy, Pillow, ReportLab) are distributed
 under their respective licenses as declared in package.json and requirements.txt.
+
+
+Microsoft Damage Assessment Visualizer integration
+--------------------------------------------------
+The vendored side-by-side control originates from microsoft/Damage_Assessment_Visualizer.
+Source: https://github.com/microsoft/Damage_Assessment_Visualizer
+Copyright (c) Microsoft Corporation. MIT License; the full license is included at
+frontend/public/vendor/microsoft-damage-visualizer/LICENSE.
+The bundled control includes leaflet-side-by-side by Gregor MacLennan (https://github.com/digidem/leaflet-side-by-side), MIT License.
+Source-produced imagery and damage layers are streamed from Microsoft's public
+visualizers with provider attribution. The MIT code license does not license
+Planet or Esri imagery for redistribution or commercial use.
+No Microsoft affiliation, sponsorship, or endorsement is claimed.
+
+Historical Israel/Gaza comparison
+---------------------------------
+Contains modified Copernicus Sentinel data (2023), obtained through Element 84
+Earth Search and the AWS Sentinel-2 L2A COG archive. Cropped true-color scenes
+from 27 September 2023 and 1 November 2023. Provenance and source asset URLs are
+in frontend/public/historical/provenance.json. Processing: RGB crop and bilinear
+resampling, without synthetic alterations. Regional comparison only; not a
+building-level damage assessment or evidence of cause or responsibility.
+Terms: https://sentinels.copernicus.eu/documents/247904/690755/Sentinel_Data_Legal_Notice

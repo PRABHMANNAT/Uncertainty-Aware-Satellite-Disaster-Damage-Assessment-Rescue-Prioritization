@@ -427,3 +427,45 @@ is under an MIT (SEI)-style license from Carnegie Mellon University.
 **DisasterIQ helps turn disaster imagery into emergency response intelligence.**
 
 ### See damage. Prioritize relief. Save lives.
+
+
+## Guided demonstrations and evidence reports
+
+Open `/demonstrations` from the assessment sidebar. Four curated natural-disaster
+cases cover the Mexico earthquake, Maui wildfires, Derna flooding and Hurricane
+Beryl. Guided playback advances through available reference, after, swipe and
+published damage views; it waits for source imagery to load. Maps use the
+MIT-licensed side-by-side control vendored from Microsoft's Damage Assessment
+Visualizer. Microsoft/Planet layers are streamed from their original hosts;
+network availability and provider terms apply. These layers are published source
+assessments, not new inferences by this app. Beryl's reference basemap is undated.
+Maui's original caption and tile path disagree on 9 versus 10 August 2023; the
+interface and case report retain that ambiguity.
+
+The Israel/Gaza historical case contains separate Gaza City and southern Israel
+(Sderot area) views, captured on **27 September 2023** and **1 November 2023**.
+The before/after reference date is 7 October 2023. These Copernicus Sentinel-2
+RGB crops have **10 m resolution** and are for regional comparison only: no
+individual-building damage, cause, responsibility or casualty inference is made.
+Source asset URLs, scene IDs, dates and crop extents are retained in
+`frontend/public/historical/provenance.json`. Imagery is bundled, so this case
+works without an external tile service. Reproduce the crops with the optional
+`rasterio` dependency and `python scripts/prepare_historical_demo.py`, then run
+`node scripts/sync-demo-catalog.cjs` to update the backend's report assets.
+
+The assessment workspace now exports zone CSV and, for WGS84 analyses, GeoJSON;
+analyst notes are included in the PDF field report. Scene-wide component counts
+are computed before splitting the image into zones, preventing boundary splits
+from inflating the summary. The report includes imagery, the overlay, all ranked
+zones, confidence availability and explicit interpretation limits.
+
+Verification, with both servers running:
+
+```powershell
+cd frontend
+npm run test:e2e
+npm run test:demos
+```
+
+Browser checks use `CHROME_BIN` to select Chromium when the default Windows Chrome
+path is not present. `APP_URL` overrides the assessment smoke test's local URL.

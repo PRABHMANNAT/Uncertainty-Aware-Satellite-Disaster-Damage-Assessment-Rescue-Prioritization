@@ -11,6 +11,7 @@ import {
   useState,
 } from "react";
 import Link from "next/link";
+import AnalysisInsights from "@/components/AnalysisInsights";
 import Icon from "@/components/Icon";
 import BriefPanel from "@/components/BriefPanel";
 import DamageCanvas from "@/components/DamageCanvas";
@@ -337,6 +338,7 @@ export default function HomePage() {
   const [postUrl, setPostUrl] = useState<string>("");
   const [preUrl, setPreUrl] = useState<string>("");
   const [brief, setBrief] = useState<string | null>(null);
+  const [analystNotes, setAnalystNotes] = useState("");
   const [briefSource, setBriefSource] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [briefLoading, setBriefLoading] = useState(false);
@@ -618,7 +620,7 @@ export default function HomePage() {
     setError(null);
 
     try {
-      const blob = await fetchReportPdf(analysis, brief);
+      const blob = await fetchReportPdf(analysis, brief, analystNotes);
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
@@ -633,7 +635,7 @@ export default function HomePage() {
     } finally {
       setReportLoading(false);
     }
-  }, [analysis, brief, markOnline]);
+  }, [analysis, brief, analystNotes, markOnline]);
 
   const totals = useMemo(() => {
     if (!analysis) {
@@ -649,23 +651,31 @@ export default function HomePage() {
 
     const zones = analysis.zones ?? [];
 
-    const noDamage = zones.reduce((sum, z) => sum + z.building_counts.none, 0);
+    const globalCounts = analysis.summary.building_counts;
+    const noDamage =
+      globalCounts?.none ??
+      zones.reduce((sum, z) => sum + z.building_counts.none, 0);
 
-    const minor = zones.reduce((sum, z) => sum + z.building_counts.minor, 0);
+    const minor =
+      globalCounts?.minor ??
+      zones.reduce((sum, z) => sum + z.building_counts.minor, 0);
 
-    const major = zones.reduce((sum, z) => sum + z.building_counts.major, 0);
+    const major =
+      globalCounts?.major ??
+      zones.reduce((sum, z) => sum + z.building_counts.major, 0);
 
-    const destroyed = zones.reduce(
-      (sum, z) => sum + z.building_counts.destroyed,
-      0,
-    );
+    const destroyed =
+      globalCounts?.destroyed ??
+      zones.reduce((sum, z) => sum + z.building_counts.destroyed, 0);
 
     return {
       noDamage,
       minor,
       major,
       destroyed,
-      total: noDamage + minor + major + destroyed,
+      total: globalCounts
+        ? analysis.summary.total_buildings
+        : noDamage + minor + major + destroyed,
       hasData: true,
     };
   }, [analysis]);
@@ -714,6 +724,7 @@ export default function HomePage() {
 
   const choosePair = (id: string) => {
     setSelectedPair(id);
+    setAnalystNotes("");
     setPreFile(null);
     setPostFile(null);
     setAnalysis(null);
@@ -732,7 +743,11 @@ export default function HomePage() {
   // Start with useful imagery rather than two empty panels. Selecting files
   // still uses independent, revocable object URLs for immediate previews.
   useEffect(() => {
-    const initial = FALLBACK_DEMO_PAIRS[0];
+    const requested = new URLSearchParams(window.location.search).get("scene");
+    const initial =
+      FALLBACK_DEMO_PAIRS.find((pair) => pair.id === requested) ??
+      FALLBACK_DEMO_PAIRS[0];
+    if (initial) setSelectedPair(initial.id);
     if (initial)
       setImageUrls(
         demoImageUrl(initial.pre_image),
@@ -740,6 +755,21 @@ export default function HomePage() {
         false,
       );
   }, [setImageUrls]);
+
+  const autoStarted = useRef(false);
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (
+      !autoStarted.current &&
+      query.get("autostart") === "1" &&
+      query.get("scene") === selectedPair &&
+      health &&
+      !loading
+    ) {
+      autoStarted.current = true;
+      void runAnalysis();
+    }
+  }, [selectedPair, health, loading, runAnalysis]);
 
   return (
     <div className="app-shell">
@@ -784,6 +814,10 @@ export default function HomePage() {
           </button>
         </nav>
 
+        <Link className="nav-item demo-nav-link" href="/demonstrations">
+          <Icon name="play" />
+          Demonstrations
+        </Link>
         <div className="source-section">
           <div className="sidebar-section-title">
             Imagery source
@@ -1182,6 +1216,11 @@ export default function HomePage() {
               )}
             </aside>
           </div>
+          <AnalysisInsights
+            analysis={analysis}
+            notes={analystNotes}
+            onNotesChange={setAnalystNotes}
+          />
           <footer className="workspace-footer">
             <span>
               <Icon name="info" size={14} />

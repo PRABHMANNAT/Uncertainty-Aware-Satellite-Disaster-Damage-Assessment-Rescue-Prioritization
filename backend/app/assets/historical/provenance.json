@@ -1,0 +1,62 @@
+{
+  "provider": "Copernicus Sentinel-2 L2A / Element 84 Earth Search",
+  "resolution_m": 10,
+  "images": [
+    {
+      "file": "gaza-city-before.jpg",
+      "date": "2023-09-27",
+      "scene_id": "S2A_36RXV_20230927_0_L2A",
+      "bbox": [
+        34.405,
+        31.48,
+        34.485,
+        31.56
+      ],
+      "asset_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/36/R/XV/2023/9/S2A_36RXV_20230927_0_L2A/TCI.tif",
+      "stac_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2A_36RXV_20230927_0_L2A",
+      "processing": "RGB crop, bilinear resampling to 768x768; no synthetic alterations"
+    },
+    {
+      "file": "southern-israel-before.jpg",
+      "date": "2023-09-27",
+      "scene_id": "S2A_36RXV_20230927_0_L2A",
+      "bbox": [
+        34.55,
+        31.485,
+        34.63,
+        31.565
+      ],
+      "asset_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/36/R/XV/2023/9/S2A_36RXV_20230927_0_L2A/TCI.tif",
+      "stac_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2A_36RXV_20230927_0_L2A",
+      "processing": "RGB crop, bilinear resampling to 768x768; no synthetic alterations"
+    },
+    {
+      "file": "gaza-city-after.jpg",
+      "date": "2023-11-01",
+      "scene_id": "S2B_36RXV_20231101_0_L2A",
+      "bbox": [
+        34.405,
+        31.48,
+        34.485,
+        31.56
+      ],
+      "asset_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/36/R/XV/2023/11/S2B_36RXV_20231101_0_L2A/TCI.tif",
+      "stac_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2B_36RXV_20231101_0_L2A",
+      "processing": "RGB crop, bilinear resampling to 768x768; no synthetic alterations"
+    },
+    {
+      "file": "southern-israel-after.jpg",
+      "date": "2023-11-01",
+      "scene_id": "S2B_36RXV_20231101_0_L2A",
+      "bbox": [
+        34.55,
+        31.485,
+        34.63,
+        31.565
+      ],
+      "asset_url": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/36/R/XV/2023/11/S2B_36RXV_20231101_0_L2A/TCI.tif",
+      "stac_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2B_36RXV_20231101_0_L2A",
+      "processing": "RGB crop, bilinear resampling to 768x768; no synthetic alterations"
+    }
+  ]
+}

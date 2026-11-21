@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
-    "test:e2e": "node e2e_clickthrough.mjs"
+    "test:e2e": "node e2e_clickthrough.mjs",
+    "test:demos": "node e2e_demonstrations.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

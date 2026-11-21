@@ -26,6 +26,7 @@ export interface Zone {
 }
 
 export interface AnalysisSummary {
+  building_counts?: BuildingCounts | null;
   total_building_pixels: number;
   total_buildings: number;
   destroyed_pct: number;
@@ -108,7 +109,8 @@ function timeoutSignal(ms: number): AbortSignal {
   }
   const controller = new AbortController();
   setTimeout(
-    () => controller.abort(new DOMException("signal timed out", "TimeoutError")),
+    () =>
+      controller.abort(new DOMException("signal timed out", "TimeoutError")),
     ms,
   );
   return controller.signal;
@@ -269,7 +271,11 @@ export async function connectToBackend(options?: {
       if (signal?.aborted || err instanceof ConnectionCancelledError) {
         throw new ConnectionCancelledError();
       }
-      if (err instanceof DOMException && err.name === "AbortError" && signal?.aborted) {
+      if (
+        err instanceof DOMException &&
+        err.name === "AbortError" &&
+        signal?.aborted
+      ) {
         throw new ConnectionCancelledError();
       }
       lastError = err;
@@ -356,13 +362,14 @@ export async function fetchBrief(
 export async function fetchReportPdf(
   analysis: AnalysisResult,
   brief: string,
+  analystNotes = "",
 ): Promise<Blob> {
   const res = await fetch(`${API_BASE}/report/pdf`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ analysis, brief }),
+    body: JSON.stringify({ analysis, brief, analyst_notes: analystNotes }),
     signal: timeoutSignal(TIMEOUT_DEFAULT_MS),
   });
 

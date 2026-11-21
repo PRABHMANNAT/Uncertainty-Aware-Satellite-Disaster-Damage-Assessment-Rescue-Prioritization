@@ -30,7 +30,7 @@ from app.services.inference import (
     run_inference,
 )
 from app.services.narrator import generate_brief
-from app.services.report import generate_report_pdf
+from app.services.report import generate_report_pdf, generate_demonstration_pdf
 from app.services.scoring import score_mask
 
 # Log through uvicorn's own logger: a bare module logger inherits the root's
@@ -381,7 +381,7 @@ async def brief(body: BriefRequest) -> BriefResponse:
 )
 async def report_pdf(body: ReportRequest) -> Response:
     pdf_bytes = await anyio.to_thread.run_sync(
-        generate_report_pdf, body.analysis, body.brief
+        generate_report_pdf, body.analysis, body.brief, body.analyst_notes
     )
 
     raw_name = body.analysis.pair_id or "upload"
@@ -415,3 +415,12 @@ async def analyze_and_brief(
     brief_resp = await generate_brief(analysis.model_dump(), context)
 
     return {"analysis": analysis, "brief": brief_resp}
+
+
+@app.get("/demonstrations/{scenario_id}/report/pdf", dependencies=[Depends(rate_limit), Depends(require_access_token)])
+async def demonstration_report(scenario_id: str, area: str | None = None) -> Response:
+    try:
+        pdf = await anyio.to_thread.run_sync(generate_demonstration_pdf, scenario_id, area)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Unknown demonstration or comparison area")
+    return Response(content=pdf, media_type="application/pdf", headers={"Content-Disposition": f'attachment; filename="disasteriq-case-{scenario_id}.pdf"'})
