@@ -3,14 +3,11 @@
 Two free services: **backend on Render**, **frontend on Vercel**. Deploy the
 backend first so you have its URL for the frontend.
 
-> Note: real ML inference needs a GPU (added later), so the deployed backend runs
-> in **stub mode**. That is not a placeholder for the demo pairs: each ships its
-> xBD ground-truth damage mask, which stub mode serves directly (the API reports
-> `stub-groundtruth`). Zone ranking, the overlay, live Fireworks AI briefs and
-> PDF export are all real. What stub mode does *not* do is predict damage on
-> imagery it has never seen — an uploaded pair with no ground truth falls back to
-> a pre/post change-detection heuristic. See the inference-mode table in the
-> [README](README.md#inference-modes).
+> The default backend uses **stub mode**: a pre/post image-change heuristic for
+> both bundled scenes and uploaded pairs. It does not return ground-truth labels
+> as predictions or provide probability confidence. Optional trained inference
+> needs a separately supplied checkpoint and compatible compute. See the
+> inference-mode table in the [README](README.md#inference-modes).
 
 ---
 

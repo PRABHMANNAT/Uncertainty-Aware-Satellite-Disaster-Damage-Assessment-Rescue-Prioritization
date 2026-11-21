@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use this software, cite this repository. For the research framework, also acknowledge the four manuscript authors listed in researchwork/references.bib."
+type: software
+title: "DisasterIQ: Uncertainty-Aware Satellite Disaster Damage Assessment and Rescue Prioritization"
+authors:
+  - family-names: Singh
+    given-names: Prabhmannat
+    affiliation: Chandigarh University
+  - name: Team DarkNem
+repository-code: "https://github.com/PRABHMANNAT/Uncertainty-Aware-Satellite-Disaster-Damage-Assessment-Rescue-Prioritization"
+license: Apache-2.0
+keywords:
+  - satellite imagery
+  - disaster damage assessment
+  - uncertainty
+  - decision support

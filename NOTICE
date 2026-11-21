@@ -1,4 +1,5 @@
 DisasterIQ
+Copyright 2026 Prabhmannat Singh (PRABHMANNAT)
 Copyright 2026 Team DarkNem
 
 This product is licensed under the Apache License, Version 2.0 (see LICENSE).
@@ -21,8 +22,9 @@ not to DisasterIQ's own source code.
 2. xView2 / xBD Dataset
    Building-damage assessment dataset used for demo pairs and fine-tuning.
    Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0
-   International (CC BY-NC-SA 4.0). NON-COMMERCIAL USE ONLY. The dataset is not
-   redistributed in this repository; download it from the official source.
+   International (CC BY-NC-SA 4.0). NON-COMMERCIAL USE ONLY. Ten curated demo
+   pairs and their annotations/targets are bundled in data/demo; the full
+   training/test dataset is not included. Download it from the official source.
    https://xview2.org
 
 3. Fireworks AI
@@ -68,3 +70,19 @@ https://www.cuchd.in/includes/assets/images/header-footer/cu-logo-white.webp
 The assets are reproduced without alteration. University identity and trademarks
 remain the property of Chandigarh University; they are not covered by this
 repository's source-code license.
+
+
+Research manuscript and extracted figures
+----------------------------------------
+The research documentation summarizes the owner-supplied manuscript
+"Uncertainty-Aware Satellite Imaging for Disaster Damage Assessment and Rescue
+Prioritization" by Prabhmannat Singh, Atharva Pratap Singh Chundawat,
+Srijan Sachdeva and Yogiraj Bhale, Chandigarh University.
+researchwork/figures contains direct PDF-rendered crops of manuscript Figure 1
+(page 3) and Figure 2 (page 4), with extraction provenance and source hashes.
+The complete source PDF is not redistributed here. Figure 2 includes Joplin
+satellite imagery and derived outputs attributed in the manuscript to the public
+xView2 deployment fixtures. Manuscript and underlying third-party figure/imagery
+rights remain with their respective holders; the source-code license does not
+override them. Reported pilot diagnostics are attributed to the manuscript,
+not represented as newly reproduced or ground-truth-validated results.

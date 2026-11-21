@@ -2,538 +2,207 @@
   <img src="./frontend/public/branding/chandigarh-university-dark.webp" alt="Chandigarh University" width="240">
 </p>
 
-<h1 align="center">Uncertainty-Aware Satellite Disaster Damage Assessment &amp; Rescue Prioritization</h1>
+# Uncertainty-Aware Satellite Imaging for Disaster Damage Assessment and Rescue Prioritization
 
-<p align="center"><strong>Chandigarh University</strong></p>
-<p align="center">Research demonstration platform · DisasterIQ</p>
+**DisasterIQ · Research demonstration software · Chandigarh University**
 
-This repository contains the research demonstration application for
-**Uncertainty-Aware Satellite Disaster Damage Assessment & Rescue Prioritization**.
-It brings together paired satellite imagery, damage estimates, explicit uncertainty,
-response-zone prioritization, guided case studies, and field-report exports.
+**Research authors:** Prabhmannat Singh, Atharva Pratap Singh Chundawat, Srijan Sachdeva and Yogiraj Bhale.
 
-The application includes four natural-disaster demonstrations, a dated Israel/Gaza
-regional comparison, Microsoft Visualizer comparison controls, and CSV/GeoJSON
-exports.
+This project explores how paired satellite images, damage estimates and explicit uncertainty can support disaster assessment. Its central research question is practical: **which areas appear severely affected, and which predictions need an analyst's attention?** The paper proposes separate outputs for these two decisions. The software provides an inspectable assessment workspace, real-event demonstrations, report exports and interactive explanations of the underlying concepts.
 
-The university logo is sourced unchanged from the
-[official Chandigarh University identity page](https://www.cuchd.in/about/our-identity.php).
+[Software features](#what-the-software-does) · [Paper diagrams](#diagrams-from-the-research-paper) · [Research method](#how-the-research-works) · [Research documentation](researchwork/README.md) · [Run locally](#run-the-software-locally) · [License](#license-and-attribution)
 
----
+## Current software
 
-# 🌍 DisasterIQ
+![Current assessment workspace with Chandigarh University branding, paired satellite imagery, severity estimates and ranked response zones](Assets/dashboard.png)
 
-### AI-Powered Disaster Damage Intelligence for Emergency Response
+*Actual software screenshot: the Mexico earthquake demonstration, including the image-change overlay, 16 response zones, scene summary and analysis/handoff tools. Displayed counts estimate connected components, not verified individual buildings.*
 
-**DisasterIQ transforms before-and-after satellite or aerial imagery into actionable disaster-response intelligence — helping relief teams identify damaged areas, prioritize response zones, and generate rapid field reports.**
+## What the software does
 
----
-
-## 🖥️ Dashboard
-
-<p align="center">
-  <img src="./Assets/dashboard.png" alt="Current Chandigarh University assessment workspace with paired satellite imagery, estimated damage overlay, and ranked response zones" width="1100">
-</p>
-
-<p align="center"><em>The current assessment workspace: Chandigarh University branding, before/after imagery, estimated damage components, ranked zones, and report/data exports. This screenshot uses the local image-change heuristic; counts are estimates, not verified buildings.</em></p>
-
-<details>
-<summary><strong>Preview the demonstrations and Paper Explorer</strong></summary>
-
-### Guided disaster demonstrations
-
-<p align="center">
-  <img src="./Assets/demonstrations.png" alt="Five-case demonstration gallery and a dated Gaza City satellite comparison" width="1100">
-</p>
-
-Four natural-disaster cases and a separate Israel/Gaza historical comparison
-provide guided map views, source information, bookmarks, and case-study reports.
-The Gaza City view shown compares 27 September with 1 November 2023 Sentinel-2
-imagery at 10 m resolution; it supplies regional context rather than building-level
-damage inference.
-
-### Interactive Paper Explorer
-
-<p align="center">
-  <img src="./Assets/paper-explorer.png" alt="Paper Explorer priority-score lab showing severity counts, weights, and an explained calculation" width="1100">
-</p>
-
-Explore the implemented method, edit severity-weighted priority calculations,
-investigate uncertainty and validation metrics, or explain a real assessment.
-The lab examples are educational and are not measured model-performance results.
-
-</details>
-
----
-
-## 🚀 Access DisasterIQ
-
-DisasterIQ runs entirely in your browser — **no installation, no setup, no download.**
-
-### ▶️ Live app: **[disasteriq.vercel.app](https://disasteriq.vercel.app/)**
-
-**How to use it:**
-
-1. Open the live app in any modern browser.
-2. In the **Mission Control** panel, select a demo image pair — or upload your own before/after images.
-3. Click **⌘ Analyze Damage**.
-4. Explore the results: the AI **damage overlay**, ranked **priority zones**, the **damage summary**, and an AI-generated **situation brief**.
-5. Click **Download field report (PDF)** to export a shareable report.
-
-> ⏳ **First load may take ~30–60 seconds** while the free-tier backend wakes from sleep. After that, it's responsive.
-
-<details>
-<summary><strong>Run it locally (for developers)</strong></summary>
-
-Requires Python 3.12 and Node.js. From the repo root:
-
-```powershell
-# Backend (FastAPI, http://localhost:8000)
-.\scripts\start-backend.ps1
-
-# Frontend (Next.js, http://localhost:3000) — in a second terminal
-.\scripts\start-frontend.ps1
-```
-
-Then open **http://localhost:3000**. See [`DEPLOY.md`](DEPLOY.md) for cloud deployment.
-
-</details>
-
----
-
-## 🚨 The Problem
-
-When disasters strike, response teams need fast answers:
-
-- Where is the damage most severe?
-- Which zones should rescue teams inspect first?
-- How many structures appear damaged or destroyed?
-- Where should limited relief resources be sent immediately?
-
-Traditional damage assessment often depends on manual ground surveys, which can be slow, dangerous, and incomplete — especially after floods, earthquakes, wildfires, hurricanes, and other large-scale disasters.
-
-**DisasterIQ is built to reduce that delay.**
-
----
-
-## 🧠 What DisasterIQ Does
-
-DisasterIQ is an AI-powered disaster triage dashboard that analyzes before-and-after imagery and converts it into clear emergency-response insights.
-
-It can:
-
-- 🛰️ Compare pre-disaster and post-disaster imagery
-- 🏚️ Detect visible damage patterns
-- 🎯 Classify damage severity across affected zones
-- 🗺️ Display a visual damage overlay
-- 📊 Generate damage summaries
-- 📍 Rank priority response zones
-- 🧾 Produce an AI-assisted situation brief
-- 📄 Export a field-ready disaster damage report
-
----
-
-## 🌐 Built for Global Disaster Response
-
-DisasterIQ is not limited to one country or one disaster type.
-
-It is designed for global disaster scenarios where before-and-after imagery is available, including:
-
-- 🌊 Floods
-- 🌎 Earthquakes
-- 🔥 Wildfires
-- 🌀 Hurricanes
-- ⛰️ Landslides
-- 🌪️ Severe storms
-
-Example deployment scenarios include Pakistan floods, Venezuela earthquakes, Turkey/Syria earthquakes, wildfire damage assessments, hurricane-hit coastal regions, and other international disaster-response operations.
-
----
-
-## ✨ Key Features
-
-### 🛰️ Before / After Image Analysis
-
-Upload or load paired imagery from before and after a disaster event.
-
-### 🎨 Visual Damage Overlay
-
-Damage results are displayed directly over the affected area, making it easier to understand the scale and location of destruction.
-
-### 📊 Damage Summary
-
-The dashboard summarizes affected structures and damage severity in a clear visual format.
-
-### 📍 Priority Zone Ranking
-
-DisasterIQ ranks zones based on severity, helping emergency teams decide where to respond first.
-
-### 🧾 Situation Brief
-
-The system generates a concise emergency-response brief that explains the damage pattern and recommended next steps.
-
-### 📄 Field Report Export
-
-Users can export a structured disaster damage report for response teams, coordinators, and stakeholders.
-
----
-
-## 🎯 Damage Severity Levels
-
-| Severity | Description |
+| Feature | What you can do |
 |---|---|
-| 🟢 No Damage | Area or structure appears largely unaffected |
-| 🟡 Minor Damage | Light visible damage or limited disruption |
-| 🟠 Major Damage | Significant visible damage requiring urgent inspection |
-| 🔴 Destroyed | Severe destruction or likely structural collapse |
+| Paired imagery | Choose among ten bundled xBD scenes or upload before/after images. |
+| Evidence inspection | Toggle the damage overlay, zoom and inspect either image in fullscreen. |
+| Damage summary | Inspect scene-wide component estimates for no damage, minor, major and destroyed classes. |
+| Response zones | Review a 4 × 4 spatial grid, severity scores, the top six zones or the full ranked list. |
+| Zone map | Inspect geographic coordinates where xBD metadata supports them; use image coordinates for ordinary uploads. |
+| Situation brief | Read a source-labelled summary. The default is a deterministic template; Fireworks narration is optional. |
+| Reports and handoff | Record analyst notes and export a PDF, a full-zone CSV and geographically valid GeoJSON. |
+| Disaster demonstrations | Explore the Mexico earthquake, Maui wildfires, Derna flooding and Hurricane Beryl. |
+| Historical comparison | Compare separate Gaza City and Southern Israel areas using dated 27 September / 1 November 2023 imagery. |
+| Guided map views | Play or pause a case walkthrough, use before/after swipe, change published-overlay opacity, inspect street maps and save cases. |
+| Paper Explorer | Follow the method; edit priority examples; explore uncertainty and validation metrics; explain a real assessment and export its numerical explanation. |
 
----
+The Mexico case executes the local analysis. The Maui, Derna and Beryl maps display published Microsoft/Planet imagery and source-produced overlays through a Microsoft Visualizer comparison control; they are not new predictions by this app. Historical Sentinel-2 imagery has 10 m pixels and supports regional comparison rather than individual-building damage assessment. Acquisition dates, provider credits and case-specific limitations are shown in the interface.
 
-## 🖥️ Demo Workflow
+<details>
+<summary><strong>See the current demonstration gallery and Paper Explorer</strong></summary>
+
+![Current demonstration gallery and dated historical comparison](Assets/demonstrations.png)
+
+*Four natural-disaster cases and a separate historical comparison, with source information, map controls and case-study reports.*
+
+![Current Paper Explorer with editable counts, severity weights and an explained priority calculation](Assets/paper-explorer.png)
+
+*The priority-score lab explains the implemented component-based score. Educational edits do not change backend rankings. Probability and confusion-matrix examples are simulations, not measured accuracy results.*
+
+</details>
+
+## Research and implementation status
+
+These three evidence sources answer different questions:
+
+| Evidence | What it establishes | What it does not establish |
+|---|---|---|
+| **Proposed full study** | A Siamese architecture, uncertainty/calibration equations and an event-wise evaluation protocol. | The supplied manuscript states that the proposed full training, baselines, calibration experiments and ablations were not executed. |
+| **Pilot reported in the paper** | Post-processing of four public xView2 deployment fixtures using stored predictor outputs. | It has no matched ground truth; its counts and entropy are descriptive diagnostics, not accuracy, calibrated confidence or rescue-outcome evidence. |
+| **This software** | A working heuristic assessment, source-aware maps, educational labs, explainable scores and exports. | The default app does not execute the paper's complete Siamese + MC-dropout + temperature-scaling model or its two probabilistic priority queues. |
+
+No trained checkpoint for the proposed study ships with this repository. Optional Docker/PyTorch adapters exist, but they are not evidence that the proposed experiment has been completed. See [results and limitations](researchwork/results-and-limitations.md) and the [software-to-paper mapping](researchwork/software-guide.md).
+
+## Diagrams from the research paper
+
+### Figure 1: proposed uncertainty-aware architecture
+
+![Architecture cropped directly from manuscript Figure 1: pre/post inputs, shared encoders, change fusion, prediction heads, calibration, risk and review maps](researchwork/figures/figure-1-architecture.png)
+
+*Source: supplied manuscript, Figure 1, page 3; direct PDF-rendered diagram crop. The proposed pipeline separates damage-risk priority from analyst-review priority. Neither output represents road accessibility. This is a research architecture, not a screenshot of the default inference engine.*
+
+### Figure 2: Joplin deployment-fixture pilot
+
+![Original manuscript Figure 2 showing Joplin post-event imagery, damage classes, entropy and illustrative risk priority](researchwork/figures/figure-2-joplin-pilot.png)
+
+*Source: supplied manuscript, Figure 2, page 4. The paper derives these outputs from stored public xView2 scores. The risk coefficient κ = 1 is illustrative; no ground-truth validation or measured rescue benefit is established. The original figure's interpretation note and caption are retained.*
+
+Both images are rendered from the supplied paper rather than recreated. [Figure provenance](researchwork/figures/README.md) records source pages, crop coordinates and SHA-256 hashes; an [extraction script](researchwork/tools/extract_figures.py) reproduces them from the source PDF.
+
+## How the research works
+
+1. **Compare matched observations.** Use pre/post RGB images and building annotations; keep entire disaster events apart across training, validation and testing.
+2. **Learn a shared representation.** The proposed ResNet-34 Siamese encoder processes both dates with shared weights. The decoder fuses pre-event features, post-event features and their absolute difference.
+3. **Localize and classify.** Separate heads predict buildings and four damage classes. Building supervision helps distinguish damage from unrelated landscape change.
+4. **Estimate uncertainty.** Repeated stochastic dropout passes produce an average class distribution, normalized predictive entropy and inter-pass dispersion. The registered protocol starts at 30 passes and checks convergence on validation data.
+5. **Calibrate confidence.** After freezing model weights, fit a positive temperature on validation data. Assess calibration separately using ECE, NLL, Brier score and reliability diagrams.
+6. **Produce two queues.** Use expected ordinal severity and its spread for conservative risk priority; use predictive entropy for analyst-review priority.
+7. **Evaluate before operational use.** Compare held-out event performance, class-wise metrics, calibration, ablations and sensitivity. Road accessibility requires independently validated data.
+
+For class severity values $s=(0,1/3,2/3,1)$ and mean class probabilities $\bar p_c$, the proposed priorities are:
+
+$$
+\mu_D=\sum_{c=1}^{4}s_c\bar p_c,\qquad
+\sigma_D^2=\sum_{c=1}^{4}\bar p_c(s_c-\mu_D)^2
+$$
+
+$$
+R_i(\kappa)=\min(1,\mu_{D,i}+\kappa\sigma_{D,i}),\qquad
+Q_i=-\frac{\sum_{c=1}^{4}\bar p_{i,c}\log\bar p_{i,c}}{\log4}
+$$
+
+**Risk and uncertainty are different.** A confidently severe prediction can have high risk and low entropy. An ambiguous prediction can warrant analyst review even when its expected damage is lower. The parameter κ expresses risk tolerance and needs sensitivity analysis; it is not an empirically proven rescue policy.
+
+The running heuristic uses a different, deterministic zone formula:
 
 ```text
-Load or Upload Disaster Image Pair
-              ↓
-View Before / After Comparison
-              ↓
-Run Damage Analysis
-              ↓
-Display Damage Overlay
-              ↓
-Generate Damage Summary
-              ↓
-Rank Priority Zones
-              ↓
-Create Situation Brief
-              ↓
-Export Field Damage Report
+priority = 100 × (2 × minor + 3.5 × major + 5 × destroyed)
+                 / (5 × total estimated components)
 ```
 
----
+This score measures relative severity; it does not include calibrated uncertainty, population, travel time, road passability or rescue staffing. The heuristic cannot identify intact buildings, so a zero no-damage count does not establish that every building is damaged.
 
-## 🧩 Technology Stack
+## Pilot diagnostics reported in the paper
 
-### Frontend
+The manuscript reports the following across four 1024 × 1024 deployment fixtures. These values are transcribed from Section IV-B; they were **not newly reproduced from this repository** during documentation preparation.
 
-- ⚛️ Next.js
-- 🟦 TypeScript
-- 🎨 Tailwind CSS
-- 🖼️ Interactive disaster dashboard
-- 📊 Visual damage summary and zone ranking
+| Diagnostic | Manuscript-reported value |
+|---|---:|
+| Total pixels | 4,194,304 |
+| Pixels passing the building rule | 597,881 (14.25%) |
+| No-damage class pixels | 45,691 |
+| Minor class pixels | 13,863 |
+| Major class pixels | 45,700 |
+| Destroyed class pixels | 492,627 |
+| Mean normalized entropy over building pixels | 0.354 |
+| Range of tile-wise mean entropy | 0.207–0.485 |
 
-### Backend
+These are **pixels, not building counts**. Entropy computed from normalized stored scores is not MC-dropout epistemic variance or proof of calibration. Published comparison numbers elsewhere in the paper belong to their cited studies and are not results achieved by this software.
 
-- 🐍 Python
-- ⚡ FastAPI
-- 🖼️ Image processing pipeline
-- 📡 REST API
-- 📄 Report generation
+## Research documentation
 
-### AI & Acceleration
+The [`researchwork`](researchwork/README.md) folder is the reading companion to the paper:
 
-- 🖥️ Damage analysis on **AMD EPYC** (verify at [`/compute`](https://disasteriq-backend.onrender.com/compute))
-- 🤖 Situation briefs on **AMD Instinct** via [Fireworks AI](https://fireworks.ai/partners/amd)
-- 🔥 PyTorch + ROCm fine-tune pipeline (shipped; see [AMD compute](#-amd-compute))
+| File | Contents |
+|---|---|
+| [literature.md](researchwork/literature.md) | Related work, primary-source links and the research gap. |
+| [methodology.md](researchwork/methodology.md) | Architecture, uncertainty, calibration and the two priority formulations. |
+| [experiments.md](researchwork/experiments.md) | Registered dataset splits, evaluation metrics, baselines and ablations. |
+| [results-and-limitations.md](researchwork/results-and-limitations.md) | Reported pilot diagnostics, evidence boundaries and unresolved validation. |
+| [software-guide.md](researchwork/software-guide.md) | What every application area does and its relationship to the paper. |
+| [reproducibility.md](researchwork/reproducibility.md) | Required artifacts, provenance, experiment checklist and manuscript clarifications. |
+| [references.bib](researchwork/references.bib) | Selected research references and manuscript citation. |
+| [figures/](researchwork/figures/README.md) | Original-paper figure crops and reproducible extraction metadata. |
 
----
+## Run the software locally
 
-## 📦 Dataset & Fine-Tuning
-
-DisasterIQ builds on the open **xView2 / xBD building-damage dataset** — paired
-pre- and post-disaster satellite imagery with per-building damage labels.
-
-### Getting the data
-
-The full dataset is large (train and test archives are ~10 GB each), so it is
-**not stored in this repository** (it is git-ignored). Download it directly from
-the official source:
-
-- 🔗 **Official dataset:** [xview2.org](https://xview2.org) — free registration required
-- The download provides the pre/post image pairs plus labels and target masks
-
-This repo already ships **ten curated demo pairs** (`data/demo/images/`, with
-matching xBD labels and ground-truth target masks) so the app runs
-end-to-end out of the box, no download needed.
-
-### Curate demo pairs from the full dataset
-
-After downloading and extracting the test archive to `data/test/`:
+Use Python 3.12 and Node.js 20 or newer. The default demonstration requires neither a GPU nor an API key.
 
 ```powershell
-.\scripts\curate_demo_subset.ps1
+# Terminal 1, from the repository root
+.\scripts\start-backend.ps1
+
+# Terminal 2
+cd frontend
+npm ci
+npm run dev
 ```
 
-This copies the pairs listed in `data/demo/manifest.json` into `data/demo/`.
+Open **http://127.0.0.1:3000**. The backend runs on port 8000. For the published standalone frontend, `NEXT_PUBLIC_API_URL` can identify the backend when a direct connection is needed; consult the deployment guide for the selected hosting arrangement.
+
+1. Select a scene or upload both images.
+2. Click **Analyze damage**.
+3. Inspect the overlay, ranked zones, map and situation brief.
+4. Add notes and export a PDF, CSV or valid geographic GeoJSON.
+5. Choose **Explain this assessment** to inspect its numerical score in the Paper Explorer.
 
 ### Inference modes
 
-The backend picks its damage model from `INFERENCE_MODE` in `.env`:
-
-| Mode | What it runs | Per-zone confidence |
+| Inference mode | Requirements | Confidence output |
 |---|---|---|
-| `stub` | A pre/post pixel-difference heuristic — co-registration, illumination matching, percentile thresholding, connected-component filtering | — |
-| `docker` | The official xView2 TF 1.15 baseline, in a container | — |
-| `pytorch` | A fine-tuned checkpoint (`ml/checkpoints/damage_best.ckpt`) | ✅ |
+| `stub` (default) | CPU image-change heuristic; no checkpoint | Unavailable |
+| `docker` | Separately built xView2 baseline image and Docker host | Unavailable in this adapter |
+| `pytorch` | Separately supplied checkpoint and compatible model code | Mean predicted-class probability per zone; not automatically calibrated |
 
-Only `pytorch` produces class probabilities, so `confidence` is reported for
-that mode alone. See [`ml/README.md`](ml/README.md) for details.
+Ground-truth demo masks are used for demo ordering and offline evaluation, never copied out as predictions. The optional narrator summarizes results without re-ranking them. See [deployment](DEPLOY.md), [data preparation](docs/DATA.md), [AMD compute notes](docs/AMD_COMPUTE.md) and [training material](ml/README.md). The research status above takes precedence over older experimental notes.
 
-**The hosted demo runs `stub`, and it is a heuristic, not a learned model.**
-Every input goes through it — the shipped demo pairs and a stranger's upload
-alike. The xBD ground-truth masks in `data/demo/targets/` are used only to rank
-the demo dropdown and for offline evaluation; they are never served as model
-output. An earlier build did short-circuit to them for demo pairs, which made
-the demo look far better than the system was, and that path has been removed.
+## Verification and contributions
 
-A consequence worth knowing before you read the dashboard: the heuristic detects
-*change*, so it cannot label an undamaged building (class 1). "No Damage" reads
-0 in `stub` mode by construction. Distinguishing an intact building from bare
-ground needs the trained model.
-
-`docker` mode requires building the baseline image first:
+The repository includes backend tests, calculator tests, browser checks and GitHub Actions. Software checks establish behavior and numerical consistency; they do not establish scientific model accuracy.
 
 ```powershell
-docker compose --profile build-ml build ml
+cd backend
+.venv\Scripts\python.exe -m pytest tests/ -q
+
+cd ..\frontend
+npm run typecheck
+npm run test:research
+npm run lint
+npm run build
 ```
 
-The first `docker`-mode analysis is slow (~2 min: TF 1.15 cold start plus two
-models), so `stub` remains the default for a responsive live demo.
+When both servers are running, use `npm run test:e2e`, `npm run test:demos` and `npm run test:paper` from `frontend`. Set `CHROME_BIN` when Chrome is installed at a different path. Contributions should preserve source attribution, separate synthetic examples from observations, and include evidence for new model-performance claims.
 
-### Fine-tuning
+## Authors and citation
 
-Fine-tuning runs on a **PyTorch** fork of xView2, not the TF 1.15 baseline —
-TensorFlow 1.15 has no practical ROCm build. Extract the train archive, filter
-to the target hazard types with `scripts/prepare_train_subset.py`, then:
+**Prabhmannat Singh · Atharva Pratap Singh Chundawat · Srijan Sachdeva · Yogiraj Bhale**
 
-```bash
-bash ml/finetune/run_amd_notebook.sh   # AMD Instinct / ROCm notebook
-bash ml/finetune/run_amd_pipeline.sh   # AMD Instinct / ROCm over SSH
-bash ml/finetune/run_kaggle_pipeline.sh  # CUDA fallback
-```
+AIT-CSE, Chandigarh University, Mohali, Punjab, India.
 
-The notebook script also captures the AMD hardware evidence described in
-[`docs/AMD_COMPUTE.md`](docs/AMD_COMPUTE.md). Full runbook in
-[`ml/finetune/README.md`](ml/finetune/README.md).
+Repository maintained under [PRABHMANNAT](https://github.com/PRABHMANNAT), with existing Team DarkNem software attribution retained. The accompanying paper is identified as an unpublished manuscript in [references.bib](researchwork/references.bib); no journal acceptance, DOI or publication venue is asserted. [CITATION.cff](CITATION.cff) supplies software citation metadata.
 
-**Status: not executed.** We could not get working hackathon GPU access, so no
-checkpoint ships and `pytorch` mode is untested end-to-end.
+## License and attribution
 
----
+Original project source code is available under **[Apache License 2.0](LICENSE)**, with **Copyright 2026 Prabhmannat Singh (PRABHMANNAT)** and the existing Team DarkNem notice retained.
 
-## 🧪 Development
+Third-party material has separate terms: the bundled xBD demonstration subset is CC BY-NC-SA 4.0; Microsoft comparison code is MIT; Planet/Esri imagery, Copernicus data, university trademarks and manuscript figures retain their respective rights and attribution. The source-code license does not override those terms. See [NOTICE](NOTICE) and [figure provenance](researchwork/figures/README.md).
 
-```powershell
-# Backend tests
-cd backend; .\.venv\Scripts\python.exe -m pytest tests/ -v
-
-# ML inference tests (CPU only — no GPU or checkpoint needed)
-python -m pytest ml/pytorch-inference/tests/ -v
-
-# Frontend
-cd frontend; npm run typecheck; npm run lint; npm run build
-```
-
-CI runs all of the above on every push and pull request
-(see [`.github/workflows/ci.yml`](.github/workflows/ci.yml)).
-
----
-
-## 📌 Use Cases
-
-DisasterIQ can support:
-
-- 🚑 Emergency response coordination
-- 🏚️ Building damage assessment
-- 🌍 Humanitarian relief planning
-- 🛰️ Satellite imagery analysis
-- 🧭 Disaster zone prioritization
-- 📋 Rapid field reporting
-- 🏛️ Government and NGO response planning
-
----
-
-## 🏆 Hackathon Context
-
-DisasterIQ was developed for the **AMD Developer Hackathon: ACT II — Unicorn Track**.
-
-The project focuses on practical disaster-response AI, combining computer vision, geospatial reasoning, emergency triage logic, and AMD compute — damage analysis on AMD EPYC, response briefs on AMD Instinct via Fireworks. See [AMD compute](#-amd-compute).
-
----
-
-## ⚡ AMD compute
-
-Every request DisasterIQ serves executes on AMD silicon. You do not have to take
-this on faith — the deployment reports its own hardware:
-
-```bash
-curl https://disasteriq-backend.onrender.com/compute
-{"cpu_model":"AMD EPYC 7R13 Processor","cpu_vendor":"AMD","cpu_count":8,
- "inference_mode":"stub","brief_model":"accounts/fireworks/models/gpt-oss-120b"}
-```
-
-**Damage analysis runs on an AMD EPYC 7R13.** The whole vision pipeline — FFT
-phase-correlation alignment, illumination matching, change detection, the
-connected-component pass that extracts buildings, and zone scoring — is
-NumPy/SciPy work executing on those EPYC cores on every analysis.
-
-**The AI situation brief runs on AMD Instinct GPUs.** Briefs are generated by
-`gpt-oss-120b` on [Fireworks AI](https://fireworks.ai/partners/amd), which
-serves inference on AMD Instinct hardware under a multi-year AMD partnership.
-
-**What we did not get to run: the ROCm fine-tune.** The pipeline is written,
-committed and documented — [`ml/finetune/run_amd_notebook.sh`](ml/finetune/run_amd_notebook.sh)
-stages the xBD subset, patches upstream xView2, trains the siamese U-Net across
-both stages on an Instinct GPU, and captures `rocm-smi` and the HIP device as
-evidence ([`docs/AMD_COMPUTE.md`](docs/AMD_COMPUTE.md)). We never obtained
-working hackathon GPU access to execute it, so **no trained checkpoint ships and
-the hosted demo runs the heuristic**, not a learned model. We would rather say
-that plainly than imply a model we are not running.
-
----
-
-## 📊 Current Capabilities
-
-DisasterIQ currently supports:
-
-- ✅ Disaster dashboard interface
-- ✅ Before / after imagery display
-- ✅ Demo image pair loading
-- ✅ Damage analysis workflow
-- ✅ Visual damage overlay
-- ✅ Damage summary cards
-- ✅ Priority zone ranking
-- ✅ AI-style situation brief generation
-- ✅ PDF field report export
-- ✅ Frontend and backend integration
-- ✅ Optional API key and per-IP rate limiting on the expensive endpoints
-- ✅ Automated test suite and CI (backend, ML, frontend)
-
----
-
-## 📄 Report Output
-
-DisasterIQ can generate a field-ready report containing:
-
-- Disaster image pair information
-- Damage severity summary
-- Priority zone ranking
-- Situation brief
-- Response recommendations
-- Field coordination notes
-
----
-
-## 🌟 Project Vision
-
-DisasterIQ is built around a simple idea:
-
-> In a disaster, faster intelligence can lead to faster response.
-
-By turning disaster imagery into structured response information, DisasterIQ aims to help emergency teams move from raw visuals to real decisions faster.
-
----
-
-## ⚠️ Disclaimer
-
-DisasterIQ is a hackathon prototype and decision-support tool.
-
-It is not a replacement for professional disaster assessment, satellite imagery experts, structural engineers, or verified field reports. All AI-generated outputs should be reviewed and validated before real-world operational use.
-
----
-
-## 👥 Team
-
-Built by **Team DarkNem**
-
----
-
-## 📜 License
-
-DisasterIQ's own source code is released under the **[Apache License 2.0](LICENSE)**.
-
-Third-party components retain their own licenses — see [`NOTICE`](NOTICE) for full
-attribution. In particular, the **xView2 / xBD dataset** is licensed under
-**CC BY-NC-SA 4.0 (non-commercial use only)**, and the **xView2 baseline** model
-is under an MIT (SEI)-style license from Carnegie Mellon University.
-
----
-
-## 💡 Final Message
-
-**DisasterIQ helps turn disaster imagery into emergency response intelligence.**
-
-### See damage. Prioritize relief. Save lives.
-
-
-## Guided demonstrations and evidence reports
-
-Open `/demonstrations` from the assessment sidebar. Four curated natural-disaster
-cases cover the Mexico earthquake, Maui wildfires, Derna flooding and Hurricane
-Beryl. Guided playback advances through available reference, after, swipe and
-published damage views; it waits for source imagery to load. Maps use the
-MIT-licensed side-by-side control vendored from Microsoft's Damage Assessment
-Visualizer. Microsoft/Planet layers are streamed from their original hosts;
-network availability and provider terms apply. These layers are published source
-assessments, not new inferences by this app. Beryl's reference basemap is undated.
-Maui's original caption and tile path disagree on 9 versus 10 August 2023; the
-interface and case report retain that ambiguity.
-
-The Israel/Gaza historical case contains separate Gaza City and southern Israel
-(Sderot area) views, captured on **27 September 2023** and **1 November 2023**.
-The before/after reference date is 7 October 2023. These Copernicus Sentinel-2
-RGB crops have **10 m resolution** and are for regional comparison only: no
-individual-building damage, cause, responsibility or casualty inference is made.
-Source asset URLs, scene IDs, dates and crop extents are retained in
-`frontend/public/historical/provenance.json`. Imagery is bundled, so this case
-works without an external tile service. Reproduce the crops with the optional
-`rasterio` dependency and `python scripts/prepare_historical_demo.py`, then run
-`node scripts/sync-demo-catalog.cjs` to update the backend's report assets.
-
-The assessment workspace now exports zone CSV and, for WGS84 analyses, GeoJSON;
-analyst notes are included in the PDF field report. Scene-wide component counts
-are computed before splitting the image into zones, preventing boundary splits
-from inflating the summary. The report includes imagery, the overlay, all ranked
-zones, confidence availability and explicit interpretation limits.
-
-Verification, with both servers running:
-
-```powershell
-cd frontend
-npm run test:e2e
-npm run test:demos
-```
-
-Browser checks use `CHROME_BIN` to select Chromium when the default Windows Chrome
-path is not present. `APP_URL` overrides the assessment smoke test's local URL.
-
-
-## Paper Explorer
-
-Open `/research` from the assessment sidebar or the demonstrations header.
-The explorer explains the repository's implemented methods; no manuscript or
-validated experimental results are bundled. All editable probability and
-validation examples are explicitly marked as educational simulations.
-
-- **Method walkthrough:** inspect the input, output, and limits of comparison,
-  change detection, component counting, confidence availability, prioritization,
-  and report handoff, with links to the implementation.
-- **Priority-score lab:** edit counts and what-if severity weights, inspect each
-  class's contribution, and compare two zones. Default scoring and two-decimal
-  rounding match `backend/app/services/scoring.py`. Changes do not affect the
-  backend's operational rankings.
-- **Uncertainty lab:** explore normalized entropy, top-class probability, class
-  margin, and an illustrative review-threshold/coverage tradeoff. These values
-  are computed for synthetic distributions, not inferred for heuristic outputs.
-- **Validation lab:** edit a four-class confusion matrix and compute accuracy,
-  precision, recall, F1, and IoU. Rows are reference labels; columns are predictions.
-  Undefined metrics show a dash and are excluded from macro averages.
-- **Explain an assessment:** use the button in Analysis & handoff after a real
-  analysis to inspect that zone's numerical score and confidence availability.
-  Only a compact numerical snapshot is passed through browser session storage;
-  images and masks are not included. Invalid or unavailable storage is handled.
-- **Export explanation:** download a JSON record separating synthetic/user-entered
-  examples from any saved workspace snapshot, with formulas and source references.
-
-Checks: `npm run test:research` runs the pure calculator tests; `npm run test:paper`
-verifies the browser interactions while both application servers are running.
-The research calculator tests also run in GitHub Actions.
+This research software supports inspection and explanation. It does not determine structural safety, casualties, road accessibility, rescue staffing or verified field conditions.

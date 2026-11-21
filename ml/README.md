@@ -16,11 +16,13 @@ CPU data prep is complete: `data/train/` (5598 masks) and `data/train_subset/` (
 
 | Mode | Behavior | When to use |
 |------|----------|-------------|
-| `stub` | GT copy for demo pairs, else pixel-diff heuristic | Fast rehearsed demo |
-
-**`stub-heuristic` limitation:** The pixel-diff fallback only labels *changed* regions as minor, major, or destroyed (classes 2–4). It cannot produce undamaged building pixels (class 1) — that requires ground-truth targets (`stub-groundtruth` on demo pairs) or a real model (`docker` / `pytorch`).
+| `stub` | Image-change heuristic for every demo and uploaded pair; never copies ground-truth masks | Default CPU demonstration |
 | `docker` | Official xView2 TF 1.15 baseline | Credibility / IoU baseline |
 | `pytorch` | Fine-tuned checkpoint via `ml/pytorch-inference/` | After AMD GPU training |
+
+**`stub-heuristic` limitation:** Only changed regions receive minor, major or destroyed labels (classes 2–4). The heuristic cannot identify undamaged buildings (class 1), and no confidence probabilities are produced. Ground-truth targets are used only for demo ordering and offline evaluation, never returned as predictions.
+
+The supplied manuscript's complete Siamese/MC-dropout/calibration experiment is distinct from these adapters and was not executed. See the [research evidence summary](../researchwork/results-and-limitations.md).
 
 Set in `.env`:
 

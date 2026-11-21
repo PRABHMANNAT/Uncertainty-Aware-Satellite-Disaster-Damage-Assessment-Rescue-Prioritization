@@ -1,0 +1,48 @@
+{
+  "source_filename": "Updated Research Paper (2).pdf",
+  "source_sha256": "9328d2d6711df8d5f59b8ee6d2e49dee74b0b7c2620811a0d7e1e27cdad0130e",
+  "manuscript_title": "Uncertainty-Aware Satellite Imaging for Disaster Damage Assessment and Rescue Prioritization",
+  "authors": [
+    "Prabhmannat Singh",
+    "Atharva Pratap Singh Chundawat",
+    "Srijan Sachdeva",
+    "Yogiraj Bhale"
+  ],
+  "method": "Direct PyMuPDF page rendering and cropping. No diagram recreation, synthetic imagery, or result modification.",
+  "figures": [
+    {
+      "file": "figure-1-architecture.png",
+      "page": 3,
+      "crop_pdf_points": [
+        54,
+        55,
+        372,
+        160
+      ],
+      "dpi": 216,
+      "size_pixels": [
+        954,
+        315
+      ],
+      "description": "Architecture diagram body; caption is transcribed in the documentation.",
+      "sha256": "88ef91c62425a6828d7d3fe2dffbfc0a5d9376c2c296f1171155b46b5c717c48"
+    },
+    {
+      "file": "figure-2-joplin-pilot.png",
+      "page": 4,
+      "crop_pdf_points": [
+        45,
+        51,
+        567,
+        236
+      ],
+      "dpi": 216,
+      "size_pixels": [
+        1566,
+        555
+      ],
+      "description": "Four-panel Joplin pilot figure, including the original interpretation note and caption.",
+      "sha256": "5f6c28f2bc00e520f52a1397228d6f80f5694d592362f626b0375b5425108836"
+    }
+  ]
+}
