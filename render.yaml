@@ -1,0 +1,54 @@
+# Render blueprint for the DisasterIQ backend (FastAPI).
+# Deploy: Render Dashboard -> New -> Blueprint -> connect this repo.
+# Secrets (FIREWORKS_API_KEY, ACCESS_TOKEN) are NOT stored here — set them in the dashboard.
+services:
+  - type: web
+    name: disasteriq-backend
+    runtime: python
+    rootDir: backend
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    # --forwarded-allow-ips: uvicorn only honours X-Forwarded-For from a trusted
+    # peer, defaulting to 127.0.0.1. Render's proxy is not on loopback, so
+    # without this every request reports the proxy's IP as the client and the
+    # per-IP rate limiter degrades into one shared bucket for all visitors.
+    # Trusting any peer is safe ONLY because Render never exposes the container
+    # directly — all traffic arrives through its proxy. Do not copy this flag
+    # to a bare-metal or self-hosted deploy without pinning real proxy IPs.
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT --forwarded-allow-ips "*"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.10
+      # Real ML inference needs a GPU/heavy image (added later). Stub keeps the
+      # deployed API fast and reliable on free CPU hosting for now.
+      - key: INFERENCE_MODE
+        value: stub
+      - key: FIREWORKS_MODEL
+        value: accounts/fireworks/models/gpt-oss-120b
+      - key: DISABLE_OPENAPI_DOCS
+        value: "true"
+      # Free instances spin down after ~15 min idle and cold-start in a minute
+      # or more, which is all a first-time visitor ever sees. The app pings its
+      # own RENDER_EXTERNAL_URL (injected by Render) every 10 min to stay
+      # resident. Cost: the service now runs ~730 h/month against the 750 h of
+      # free instance hours, so this must remain the only free web service on
+      # the account. Set to "false" to let it sleep again.
+      - key: KEEP_ALIVE
+        value: "true"
+      - key: KEEP_ALIVE_INTERVAL_SECONDS
+        value: "600"
+      # Exact frontend origins (no broad *.vercel.app regex).
+      - key: CORS_ORIGINS
+        value: '["https://disasteriq.vercel.app","http://localhost:3000","http://127.0.0.1:3000"]'
+      # Leave CORS_ORIGIN_REGEX empty — prefer exact CORS_ORIGINS above.
+      - key: RATE_LIMIT_REQUESTS
+        value: "30"
+      - key: RATE_LIMIT_WINDOW_SECONDS
+        value: "60"
+      # Set the actual key in the Render dashboard (Environment tab) — never commit it.
+      - key: FIREWORKS_API_KEY
+        sync: false
+      # Optional shared secret for /analyze, /brief, /report/pdf.
+      # Enable only behind a server-side BFF/proxy — never put this in the browser.
+      - key: ACCESS_TOKEN
+        sync: false
